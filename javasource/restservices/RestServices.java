@@ -110,7 +110,12 @@ public class RestServices {
 	}
 
 	public static String getBaseUrl() {
-		return Core.getConfiguration().getApplicationRootUrl() + PATH_REST;
+		String rootUrl = Core.getConfiguration().getApplicationRootUrl();
+		if (!rootUrl.endsWith("/")) {
+			return rootUrl + "/" + PATH_REST;
+		} else {
+			return rootUrl + PATH_REST;
+		}
 	}
 
 	/**
